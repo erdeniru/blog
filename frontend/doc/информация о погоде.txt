@@ -1,0 +1,19 @@
+﻿1. Яндекс.Погода - не работает на локальных серверах
+https://yandex.ru/pogoda/b2b/console/api-page
+
+const accessKey = '3f6b3111-0990-42bf-8547-6ed6bc813eff';
+
+const headers = {
+    'X-Yandex-Weather-Key': accessKey
+};
+
+fetch('https://api.weather.yandex.ru/v2/forecast?lat=52.37125&lon=4.89388', { headers })
+    .then(response => response.json())
+    .then(json => console.log(json));
+
+2. OpenWeather
+https://openweathermap.org/current
+
+fetch('https://api.openweathermap.org/data/2.5/weather?q=irkutsk&units=metric&lang=ru&appid=bd218849e787915938470632f8387945')
+    .then(response => response.json())
+    .then(json => console.log(json));
