@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const roles = require('../constants/roles');
 
-const UserScheme = mongoose.Schema(
+const UserSchema = mongoose.Schema(
     {
         login: {
             type: String,
@@ -20,6 +20,6 @@ const UserScheme = mongoose.Schema(
     { timestamps: true },
 );
 
-const User = mongoose.model('User', UserScheme);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

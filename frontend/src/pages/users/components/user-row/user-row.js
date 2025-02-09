@@ -10,7 +10,7 @@ const UserRowContainer = ({
     className,
     id,
     login,
-    registedAt,
+    registeredAt,
     roleId: userRoleId,
     roles,
     onUserRemove,
@@ -24,7 +24,7 @@ const UserRowContainer = ({
     };
 
     const onRoleSave = (userId, newUserRoleId) => {
-        request(`/api/users/${userId}`, 'PATCH', { roleId: newUserRoleId }).then(() => {
+        request(`/users/${userId}`, 'PATCH', { roleId: newUserRoleId }).then(() => {
             setInitialRoleId(newUserRoleId);
         });
     };
@@ -35,7 +35,7 @@ const UserRowContainer = ({
         <div className={className}>
             <TableRow border={true}>
                 <div className="login-column">{login}</div>
-                <div className="registred-at-column">{registedAt}</div>
+                <div className="registered-at-column">{registeredAt}</div>
                 <div className="role-column">
                     <select value={selectedRoleId} onChange={onRoleChange}>
                         {roles.map(({ id: roleId, name: roleName }) => (
@@ -70,7 +70,7 @@ export const UserRow = styled(UserRowContainer)`
 UserRow.propTypes = {
     id: PropTypes.string.isRequired,
     login: PropTypes.string.isRequired,
-    registedAt: PropTypes.string.isRequired,
+    registeredAt: PropTypes.string.isRequired,
     roleId: PROP_TYPE.ROLE_ID.isRequired,
     roles: PropTypes.arrayOf(PROP_TYPE.ROLE).isRequired,
     onUserRemove: PropTypes.func.isRequired,

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Input, Icon } from '../../../../components';
 import { SpecialPanel } from '../special-panel/special-panel';
-import { sanizeContent } from './utils/sanitize-content/sanitize-content';
+import { sanizeContent } from './utils';
 import { savePostAsync } from '../../../../actions';
 import styled from 'styled-components';
 import { PROP_TYPE } from '../../../../constants';

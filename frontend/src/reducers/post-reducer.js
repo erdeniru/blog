@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from '../actions/action-type';
+import { ACTION_TYPE } from '../actions';
 
 const initialPostState = {
     id: '',

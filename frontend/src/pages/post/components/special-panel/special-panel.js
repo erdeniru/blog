@@ -34,7 +34,7 @@ const SpecialPanelContainer = ({ className, id, publishedAt, editButton }) => {
     return (
         <div className={className}>
             <div className="published-at">
-                {id && (
+                {publishedAt && (
                     <Icon
                         id="fa-calendar-o"
                         size="18px"
@@ -47,7 +47,7 @@ const SpecialPanelContainer = ({ className, id, publishedAt, editButton }) => {
             {isAdmin && (
                 <div className="buttons">
                     {editButton}
-                    {id && (
+                    {publishedAt && (
                         <Icon
                             id="fa-trash-o"
                             size="21px"

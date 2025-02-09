@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const roles = require('../constants/roles');
 const validator = require('validator');
 
-const PostScheme = mongoose.Schema(
+const PostSchema = mongoose.Schema(
     {
         title: {
             type: String,
@@ -30,6 +29,6 @@ const PostScheme = mongoose.Schema(
     { timestamps: true },
 );
 
-const Post = mongoose.model('Post', PostScheme);
+const Post = mongoose.model('Post', PostSchema);
 
 module.exports = Post;

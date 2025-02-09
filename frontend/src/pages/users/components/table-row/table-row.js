@@ -19,7 +19,7 @@ export const TableRow = styled(TableRowContainer)`
         width: 172px;
     }
 
-    & .registred-at-column {
+    & .registered-at-column {
         width: 213px;
     }
 

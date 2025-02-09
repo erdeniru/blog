@@ -19,7 +19,7 @@ const UsersContainer = ({ className }) => {
     useEffect(() => {
         if (!checkAccess([ROLE.ADMIN], userRole)) return;
 
-        Promise.all([request('/api/users'), request('/api/users/roles')]).then(
+        Promise.all([request('/users'), request('/users/roles')]).then(
             ([usersRes, rolesRes]) => {
                 if (usersRes.error || rolesRes.error) {
                     setErrorMessage(usersRes.error || rolesRes.error);
@@ -34,7 +34,7 @@ const UsersContainer = ({ className }) => {
     const onUserRemove = (userId) => {
         if (!checkAccess([ROLE.ADMIN], userRole)) return;
 
-        request(`/api/users/${userId}`, 'DELETE').then(() => {
+        request(`/users/${userId}`, 'DELETE').then(() => {
             setShouldUpdateUserList(!shouldUpdateUserList);
         });
     };
@@ -46,15 +46,15 @@ const UsersContainer = ({ className }) => {
                 <div>
                     <TableRow>
                         <div className="login-column">Логин</div>
-                        <div className="registed-at-column">Дата регистрации</div>
+                        <div className="registered-at-column">Дата регистрации</div>
                         <div className="role-column">Роль</div>
                     </TableRow>
-                    {users.map(({ id, login, registedAt, roleId }) => (
+                    {users.map(({ id, login, registeredAt, roleId }) => (
                         <UserRow
                             key={id}
                             id={id}
                             login={login}
-                            registedAt={registedAt}
+                            registeredAt={registeredAt}
                             roleId={roleId}
                             roles={roles.filter(
                                 ({ id: roleId }) => roleId !== ROLE.GUEST,

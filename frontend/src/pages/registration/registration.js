@@ -17,17 +17,17 @@ const regFormSchema = yup.object().shape({
     login: yup
         .string()
         .required('Заполните логин')
-        .matches(/^\w+$/, 'Неверно заполнен пароль только буквы и цифры')
-        .min(3, 'Неверно заполнен пароль. Минимум 3 символа')
-        .max(15, 'Неверно заполнен пароль. Максимум 15 символов'),
+        .matches(/^\w+$/, 'Неверно заполнен логин. Допускаются только буквы и цифры')
+        .min(3, 'Неверно заполнен логин. Минимум 3 символа')
+        .max(15, 'Неверно заполнен логин. Максимум 15 символов'),
     password: yup
         .string()
         .required('Заполните пароль')
         .matches(
             /^[\w#%]+$/,
-            'Неверно заполнен пароль. Допускаются буквы, цифры и занки № %',
+            'Неверно заполнен пароль. Допускаются буквы, цифры и знаки # %',
         )
-        .min(6, 'Неверно заполнен пароль. Минимум 6 символа')
+        .min(6, 'Неверно заполнен пароль. Минимум 6 символов')
         .max(30, 'Неверно заполнен пароль. Максимум 30 символов'),
     passcheck: yup
         .string()
@@ -59,7 +59,7 @@ const RegistrationContainer = ({ className }) => {
     useResetForm(reset);
 
     const onSubmit = ({ login, password }) => {
-        request('/api/register', 'POST', { login, password }).then(({ error, user }) => {
+        request('/register', 'POST', { login, password }).then(({ error, user }) => {
             if (error) {
                 setServerError(`Ошибка запроса: ${error}`);
                 return;

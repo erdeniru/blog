@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { PostCard } from './components/post-card/post-card';
-import { Pagination, Search } from './components';
+import { Pagination, PostCard, Search } from './components';
 import { PAGINATION_LIMIT } from '../../constants';
 import { debounce } from './utils';
 import styled from 'styled-components';
@@ -15,7 +14,7 @@ const MainContainer = ({ className }) => {
 
     useEffect(() => {
         request(
-            `/api/posts?search=${searchPhrase}&page=${page}&limit=${PAGINATION_LIMIT}`,
+            `/posts?search=${searchPhrase}&page=${page}&limit=${PAGINATION_LIMIT}`,
         ).then(({ data: { posts, lastPage } }) => {
             setPosts(posts);
             setLastPage(lastPage);
@@ -34,7 +33,7 @@ const MainContainer = ({ className }) => {
         <div className={className}>
             <div className="posts-and-search">
                 <Search searchPhrase={searchPhrase} onChange={onSearch} />
-                {posts.length ? (
+                {posts.length > 0 ? (
                     <div className="post-list">
                         {posts.map(({ id, title, imageUrl, publishedAt, comments }) => (
                             <PostCard
